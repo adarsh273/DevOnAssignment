@@ -77,7 +77,10 @@ public class SearchResultsPage extends Base {
             elementUtil.waitForElementPresent(mobileCategory, 3);
             elementUtil.scrollTillElementVisible(this.brandElement);
             if (elementUtil.waitForElementPresent(brandElement, 2)) {
-                elementUtil.getElement(searchBrand).sendKeys(brand);
+                WebElement elem =  elementUtil.getElement(searchBrand);
+                elem.clear();
+                elem.sendKeys(brand);
+//                elementUtil.getElement(searchBrand).sendKeys(brand);
                 elementUtil.getElement(getBrandToSelectXPath(brand)).click();
                 elementUtil.moveToPosition();
             } else {

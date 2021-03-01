@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +38,7 @@ public class Base {
 
     public WebDriver initDriver(Properties prop) {
         String browser = prop.getProperty("browser");
+        PropertyConfigurator.configure("./src/main/java/com/qa/trakpilf/config/log4j.properties");
 
         LOGGER.info("Browser: " + browser);
 
@@ -63,6 +65,7 @@ public class Base {
         e_driver.register(eventListener);
         driver = e_driver;
 
+        LOGGER.info("exiting initDriver...");
         return driver;
     }
 

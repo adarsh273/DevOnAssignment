@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.trakpilf.testdata.Constants;
+
 /**
  * @author adarsh
  *
@@ -38,6 +40,10 @@ public class ElementUtil {
         }
 
         return element;
+    }
+    
+    public boolean isElementVisible(By locator) {
+        return true;
     }
 
     public List<WebElement> getElementsList(By locator) {
@@ -73,7 +79,7 @@ public class ElementUtil {
         actions.moveByOffset(0, 25);
     }
 
-    // JavaScript executor
+    // JavaScript executor, to be refactored
 
     public void scrollTillElementVisible(By locator) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -84,6 +90,18 @@ public class ElementUtil {
     public void scrollToOffset() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
+    }
+
+    public void scrollPage(String option) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        switch (option) {
+        case "end":
+            js.executeScript(Constants.END_OF_PAGE);
+        case "start":
+            js.executeScript(Constants.START_OF_PAGE);
+        default:
+            System.out.println("Wrong option entered!!!, ");
+        }
     }
 
     // waits

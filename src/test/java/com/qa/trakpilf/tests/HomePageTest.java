@@ -14,15 +14,16 @@ import com.qa.trakpilf.testdata.Constants;
  *
  */
 public class HomePageTest extends BaseTest {
-    @Test
+    @Test(priority = 1)
     public void verifyHomePageTitle() {
         Assert.assertEquals(homePage.getHomePageTitle(), Constants.HOME_PAGE_TITLE);
     }
 
-    @Test
+    @Test(priority = 2)
     public void searchInPage() {
         homePage.closeLoginPopUp();
         homePage.searchInHomePage("Mobiles");
+        homePage.backToHomePage();
     }
 
 }
